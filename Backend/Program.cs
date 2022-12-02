@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>  {
     options.AddPolicy(AllowedOrigins,
         policy => {
-            policy.WithOrigins("*")
+            policy.WithOrigins("http://localhost:5173")
                 .WithMethods("PUT","POST","DELETE","GET")
                 .AllowAnyHeader()
                 .AllowAnyMethod();
