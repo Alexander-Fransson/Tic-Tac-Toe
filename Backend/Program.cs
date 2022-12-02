@@ -1,10 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using Backend.Models;
 
+var AllowedOrigins = "_UltraRestrictivePolicy";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddCors(options =>  {
+    options.AddPolicy(AllowedOrigins,
+        policy => {
+            policy.WithOrigins("*")
+                .WithMethods("PUT","POST","DELETE","GET")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 builder.Services.AddControllers();
 builder.Services.AddDbContext<UserContext>(opt => 
     opt.UseInMemoryDatabase("Users"));
@@ -22,6 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(AllowedOrigins);
 
 app.UseHttpsRedirection();
 
