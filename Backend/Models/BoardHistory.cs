@@ -2,6 +2,7 @@ namespace Backend.Models;
 
 public class BoardHistory{
     public long Id {get; set;}
+    public int Score {get; set;}
     public int Player1 {get; set;}
     public int Player2 {get; set;}
     public string? Square1 {get; set;}

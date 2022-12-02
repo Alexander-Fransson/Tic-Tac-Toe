@@ -8,42 +8,15 @@ export const useCurrentData = defineStore("currentData", {
             playerOne: '',
             playerTwo: '',
             sqares: [
-                {
-                    number: 1,
-                    sign: ''
-                },
-                {
-                    number: 2,
-                    sign: ''
-                },
-                {
-                    number: 3,
-                    sign: ''
-                },
-                {
-                    number: 4,
-                    sign: ''
-                },
-                {
-                    number: 5,
-                    sign: ''
-                },
-                {
-                    number: 6,
-                    sign: ''
-                },
-                {
-                    number: 7,
-                    sign: ''
-                },
-                {
-                    number: 8,
-                    sign: ''
-                },
-                {
-                    number: 9,
-                    sign: ''
-                },
+                ' ',
+                ' ',
+                ' ',
+                ' ',
+                ' ',
+                ' ',
+                ' ',
+                ' ',
+                ' '
             ]
         }
     },
@@ -65,21 +38,21 @@ export const useCurrentData = defineStore("currentData", {
             }
         },
         changeSquare(playerOne: boolean, square: number){
-            const currentSign = this.sqares[square].sign
+            const currentSign = this.sqares[square]
 
             if(playerOne){
-                if(currentSign === ""){
-                    this.sqares[square].sign = "X"
+                if(currentSign === " "){
+                    this.sqares[square] = "X"
                 }
                 else if(currentSign === "X"){
-                    this.sqares[square].sign = ""
+                    this.sqares[square] = " "
                 }
             }else{
-                if(currentSign === ""){
-                    this.sqares[square].sign = "O"
+                if(currentSign === " "){
+                    this.sqares[square]= "O"
                 }
                 else if(currentSign === "O"){
-                    this.sqares[square].sign = ""
+                    this.sqares[square] = " "
                 }
             }
         }
