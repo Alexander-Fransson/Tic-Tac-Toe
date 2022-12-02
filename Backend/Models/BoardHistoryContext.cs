@@ -9,5 +9,5 @@ public class BoardHistoryContext : DbContext
     {
     }
 
-    public DbSet<BoardHistory> BoardHistories = null!;
+    public DbSet<BoardHistory> BoardHistories {get; set;} = null!;
 }
