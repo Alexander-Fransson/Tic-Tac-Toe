@@ -1,9 +1,9 @@
 import { defineStore } from "pinia"
 
 interface IUser {
-    Id: number,
-    Name: string,
-    HighScoar: number
+    id: number,
+    name: string,
+    highScoar: number
 }
 
 export const useUserStore = defineStore("userStore",{
@@ -22,11 +22,11 @@ export const useUserStore = defineStore("userStore",{
             this.users = res;
         },
         async addUser(name: string){
-            const id = this.users.length? this.users.map(user => user.Id).sort()[this.users.length] : 1
+            const id = this.users.length? this.users.map(user => user.id).sort()[this.users.length] : 1
             const body = JSON.stringify({
-                Id: id,
-                Name: name,
-                HighScoar: 0
+                id: id,
+                name: name,
+                highScoar: 0
             })
 
             const req = await fetch('http://localhost:5251/api/Users', {
@@ -42,5 +42,14 @@ export const useUserStore = defineStore("userStore",{
             console.log(res)
             this.updateStore()
         },
+        checkIfUserExhists(wantenName: string){
+            let allowed = true;
+            this.users.forEach(user => {
+                if(user.name === wantenName){
+                    allowed = false
+                }
+            })
+            return allowed
+        }
     } 
 })
