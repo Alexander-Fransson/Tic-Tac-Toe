@@ -5,9 +5,9 @@
     const data = useCurrentData()
     console.log(data.sqares)
 
-    // if(data.playerOne === "" || data.playerTwo===""){
-    //     router.push("/")
-    // }
+    if(data.playerOne === "" || data.playerTwo===""){
+        router.push("/")
+    }
 
     
 </script>
@@ -15,9 +15,9 @@
 <template>
     <h1>Tic Tac Toe</h1>
     <section >
-        <input v-for="(squares) in data.sqares" type="button" :value="squares"/>
+        <input v-for="(squares, index) in data.sqares" type="button" :value="squares" @click="data.changeSquare(index)"/>
     </section>
-    <h2>someonesturn</h2>
+    <h2>{{data.showWhosTurn()}}</h2>
 </template>
 
 <style scoped>
